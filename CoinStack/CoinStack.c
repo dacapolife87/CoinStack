@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////////////////////// 
+/* 줄 바꿈 길이 */
+
+/*************************************
+* Coin Stack
+* VisualStudio 2012
+* 2014.04.16~
+*************************************/
+
 #include <stdio.h>
 #include <Windows.h>
 #include <conio.h>
@@ -5,23 +14,23 @@
 #define SLEEPTIME 100
 #define DROPTIME 50
 #define ENDINGTIME 2000
-#define COL			GetStdHandle(STD_OUTPUT_HANDLE)				 // 콘솔창의 핸들정보 받기
-#define BLACK       SetConsoleTextAttribute(COL, 0x0000);        // 검정색
-#define DARK_BLUE   SetConsoleTextAttribute(COL, 0x0001);        // 파란색
-#define GREEN       SetConsoleTextAttribute(COL, 0x0002);        // 녹색
-#define BLUE_GREEN  SetConsoleTextAttribute(COL, 0x0003);        // 청녹색
-#define BLOOD       SetConsoleTextAttribute(COL, 0x0004);        // 검붉은색
-#define PURPLE      SetConsoleTextAttribute(COL, 0x0005);        // 보라색
-#define GOLD        SetConsoleTextAttribute(COL, 0x0006);        // 금색
-#define ORIGINAL    SetConsoleTextAttribute(COL, 0x0007);        // 밝은 회색 (ORIGINAL CONSOLE COLOR)
-#define GRAY        SetConsoleTextAttribute(COL, 0x0008);        // 회색
-#define BLUE        SetConsoleTextAttribute(COL, 0x0009);        // 파란색
-#define HIGH_GREEN  SetConsoleTextAttribute(COL, 0x000a);        // 연두색
-#define SKY_BLUE    SetConsoleTextAttribute(COL, 0x000b);        // 하늘색
-#define RED         SetConsoleTextAttribute(COL, 0x000c);        // 빨간색
-#define PLUM        SetConsoleTextAttribute(COL, 0x000d);        // 자주색
-#define YELLOW      SetConsoleTextAttribute(COL, 0x000e);        // 노란색
-#define WHITE       SetConsoleTextAttribute(COL, 0x000f);        // 흰색
+#define COL			GetStdHandle(STD_OUTPUT_HANDLE)			// 콘솔창의 핸들정보 받기
+#define BLACK       SetConsoleTextAttribute(COL, 0x0000);   // 검정색
+#define DARK_BLUE   SetConsoleTextAttribute(COL, 0x0001);   // 파란색
+#define GREEN       SetConsoleTextAttribute(COL, 0x0002);   // 녹색
+#define BLUE_GREEN  SetConsoleTextAttribute(COL, 0x0003);   // 청녹색
+#define BLOOD       SetConsoleTextAttribute(COL, 0x0004);   // 검붉은색
+#define PURPLE      SetConsoleTextAttribute(COL, 0x0005);   // 보라색
+#define GOLD        SetConsoleTextAttribute(COL, 0x0006);   // 금색
+#define ORIGINAL    SetConsoleTextAttribute(COL, 0x0007);   // 밝은 회색 (ORIGINAL CONSOLE COLOR)
+#define GRAY        SetConsoleTextAttribute(COL, 0x0008);   // 회색
+#define BLUE        SetConsoleTextAttribute(COL, 0x0009);   // 파란색
+#define HIGH_GREEN  SetConsoleTextAttribute(COL, 0x000a);   // 연두색
+#define SKY_BLUE    SetConsoleTextAttribute(COL, 0x000b);   // 하늘색
+#define RED         SetConsoleTextAttribute(COL, 0x000c);   // 빨간색
+#define PLUM        SetConsoleTextAttribute(COL, 0x000d);   // 자주색
+#define YELLOW      SetConsoleTextAttribute(COL, 0x000e);   // 노란색
+#define WHITE       SetConsoleTextAttribute(COL, 0x000f);   // 흰색
 
 
 void setWindowSize();
@@ -50,23 +59,75 @@ void startMenu()
 	system("cls");
 	printImage();
 	selectMenu();
+
 	return;
 }
-void stackgame()
+int selectLevel()
+{
+	int selectedLevel=1;
+	
+	do
+	{
+		system("cls");
+		printf("1. Level 1\n");
+		printf("2. Level 2\n");
+		printf("3. Level 3\n");
+		printf("4. Level 4\n");
+		printf("5. Level 5\n");
+
+		printf("0. Back\n");
+
+		scanf("%d",&selectedLevel);
+
+		switch (selectedLevel)
+		{
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		case 3:
+			return 3;
+		case 4:
+			return 4;
+		case 5:
+			return 5;
+		case 0:
+			startMenu();
+			return 0;
+
+		default:
+			printf("다시 입력해 주세요.\n");
+			continue;
+		}
+	}while(1);
+}
+void stackgame(int level)
 {
 	int x=23;
 	int y=1;
+	int speed=100;
 	setWindowSize();
 
 	
 	drawBackgroundFunc();
-	printScore();
+	printScore(level);
 	gotoxy(x,y);
-	coinMove(x,y);
+	speed = speedForLevel(level);
+	coinMove(x,y,speed,level);
 
 	return;
 }
-void coinMove(int x,int y)
+int speedForLevel(int level)
+{
+	int movingSpeed=SLEEPTIME;
+	int i;
+	for(i=1;i<level;i++)
+	{
+		movingSpeed = (movingSpeed * 9)/10;
+	}
+	return movingSpeed;
+}
+void coinMove(int x,int y,int speed,int level)
 {
 	int rightmove = 1;
 	int leftmove = 0;
@@ -80,7 +141,7 @@ void coinMove(int x,int y)
 		{
 			gotoxy(x,y);
 			printf("▥▥▥▥");
-			Sleep(SLEEPTIME);
+			Sleep(speed);
 			x++;
 			if(x==53)
 			{
@@ -93,7 +154,7 @@ void coinMove(int x,int y)
 		{
 			gotoxy(x,y);
 			printf("▥▥▥▥");
-			Sleep(SLEEPTIME);
+			Sleep(speed);
 			x--;
 			if(x==23)
 			{
@@ -101,7 +162,7 @@ void coinMove(int x,int y)
 				rightmove=1;
 			}
 		}
-		if(kbhit())
+		if(kbhit())	
 		{
 			getch();
 			clearpoint((x-8),y);
@@ -137,7 +198,7 @@ void coinMove(int x,int y)
 		}
 		if(dropheight==15)
 		{
-			clearLevel();
+			clearLevel(level);
 			return;
 		}
 	}
@@ -162,7 +223,7 @@ void gameOver()
 	startMenu();
 	return;
 }
-void clearLevel()
+void clearLevel(int level)
 {
 	int x,y;
 	char yes;
@@ -172,6 +233,7 @@ void clearLevel()
 	gotoxy(x,y);
 	printf("GameClear\n");
 	Sleep(1000);
+	level++;
 	system("cls");
 	do
 	{
@@ -180,7 +242,7 @@ void clearLevel()
 		switch (yes)
 		{
 		case 'Y':case'y':
-			stackgame();
+			stackgame(level);
 			return;
 		case 'N':case'n':
 			startMenu();
@@ -235,6 +297,7 @@ void selectMenu()
 {
 	int x,y;
 	int menu=0;
+	int levelNum=0;
 	x=35;
 	y=16;
 	gotoxy(x,y);
@@ -245,7 +308,11 @@ void selectMenu()
 		switch (menu)
 		{
 		case 1:
-			stackgame();
+			levelNum = selectLevel();
+
+			printf("%d",levelNum);
+			
+			stackgame(levelNum);
 		case 2:
 			return;
 		default:
@@ -276,7 +343,7 @@ void printImage()
 	
 	return;
 }
-void printScore()
+void printScore(int level)
 {
 	int x,y;
 	x=3;
@@ -287,7 +354,7 @@ void printScore()
 	x=65;
 	y=10;
 	gotoxy(x,y);
-	printf("Level 01\n");
+	printf("Level %d\n",level);
 	x=65;
 	y=12;
 	gotoxy(x,y);
@@ -295,7 +362,7 @@ void printScore()
 
 	return;
 }
-void drawBackgroundFunc()
+void drawBackgroundFunc()  // 게임 공간 백그라운드
 {
 	
 	int i,j;
@@ -333,6 +400,6 @@ void drawBackgroundFunc()
 	}
 	printf("▦");
 	printf("\n");
-	printf("123456789012345678901234567890123456789012345678901234567890");
+	printf("1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"); // 콘솔창 커서좌표 확인하기 위한 임시 숫자
 	return;
 }

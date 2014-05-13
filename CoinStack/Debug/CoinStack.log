@@ -1,24 +1,29 @@
-﻿Build started 2014-05-07 오전 9:55:21.
-     1>Project "C:\Users\dacapolifeNotebook\Desktop\CoinStack\CoinStack\CoinStack.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2014-05-09 오후 4:42:10.
+     1>Project "C:\Users\dacapolifeNotebook\CoinStack\CoinStack\CoinStack.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt CoinStack.c
          CoinStack.c
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(104): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _kbhit. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\conio.h(133) : see declaration of 'kbhit'
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(106): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\conio.h(131) : see declaration of 'getch'
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(120): warning C4244: 'function' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(126): warning C4244: 'function' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(146): warning C4028: formal parameter 1 different from declaration
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(179): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(80): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : see declaration of 'scanf'
-     1>c:\users\dacapolifenotebook\desktop\coinstack\coinstack\coinstack.c(242): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(115): warning C4013: 'speedForLevel' undefined; assuming extern returning int
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(116): warning C4020: 'coinMove' : too many actual parameters
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(131): warning C4029: declared formal parameter list different from definition
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(165): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _kbhit. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\conio.h(133) : see declaration of 'kbhit'
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(167): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\conio.h(131) : see declaration of 'getch'
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(181): warning C4244: 'function' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(187): warning C4244: 'function' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(207): warning C4028: formal parameter 1 different from declaration
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(241): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : see declaration of 'scanf'
+     1>c:\users\dacapolifenotebook\coinstack\coinstack\coinstack.c(305): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : see declaration of 'scanf'
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dacapolifeNotebook\Desktop\CoinStack\Debug\CoinStack.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\dacapolifeNotebook\Desktop\CoinStack\Debug\CoinStack.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\dacapolifeNotebook\Desktop\CoinStack\Debug\CoinStack.lib" /MACHINE:X86 Debug\CoinStack.obj
-         CoinStack.vcxproj -> C:\Users\dacapolifeNotebook\Desktop\CoinStack\Debug\CoinStack.exe
-     1>Done Building Project "C:\Users\dacapolifeNotebook\Desktop\CoinStack\CoinStack\CoinStack.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dacapolifeNotebook\CoinStack\Debug\CoinStack.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\dacapolifeNotebook\CoinStack\Debug\CoinStack.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\dacapolifeNotebook\CoinStack\Debug\CoinStack.lib" /MACHINE:X86 Debug\CoinStack.obj
+         CoinStack.vcxproj -> C:\Users\dacapolifeNotebook\CoinStack\Debug\CoinStack.exe
+     1>Done Building Project "C:\Users\dacapolifeNotebook\CoinStack\CoinStack\CoinStack.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.35
+Time Elapsed 00:00:00.83
