@@ -82,15 +82,15 @@ int selectLevel()
 		switch (selectedLevel)
 		{
 		case 1:
-			return 100;
+			return 1;
 		case 2:
-			return 90;
+			return 2;
 		case 3:
-			return 80;
+			return 3;
 		case 4:
-			return 70;
+			return 4;
 		case 5:
-			return 60;
+			return 5;
 		case 0:
 			startMenu();
 			return 0;
@@ -101,21 +101,33 @@ int selectLevel()
 		}
 	}while(1);
 }
-void stackgame(int speed)
+void stackgame(int level)
 {
 	int x=23;
 	int y=1;
+	int speed=100;
 	setWindowSize();
 
 	
 	drawBackgroundFunc();
-	printScore();
+	printScore(level);
 	gotoxy(x,y);
-	coinMove(x,y,speed);
+	speed = speedForLevel(level);
+	coinMove(x,y,speed,level);
 
 	return;
 }
-void coinMove(int x,int y,int speed)
+int speedForLevel(int level)
+{
+	int movingSpeed=SLEEPTIME;
+	int i;
+	for(i=1;i<level;i++)
+	{
+		movingSpeed = (movingSpeed * 9)/10;
+	}
+	return movingSpeed;
+}
+void coinMove(int x,int y,int speed,int level)
 {
 	int rightmove = 1;
 	int leftmove = 0;
@@ -186,7 +198,7 @@ void coinMove(int x,int y,int speed)
 		}
 		if(dropheight==15)
 		{
-			clearLevel(speed);
+			clearLevel(level);
 			return;
 		}
 	}
@@ -211,7 +223,7 @@ void gameOver()
 	startMenu();
 	return;
 }
-void clearLevel(int speed)
+void clearLevel(int level)
 {
 	int x,y;
 	char yes;
@@ -221,6 +233,7 @@ void clearLevel(int speed)
 	gotoxy(x,y);
 	printf("GameClear\n");
 	Sleep(1000);
+	level++;
 	system("cls");
 	do
 	{
@@ -229,7 +242,7 @@ void clearLevel(int speed)
 		switch (yes)
 		{
 		case 'Y':case'y':
-			stackgame(speed-10);
+			stackgame(level);
 			return;
 		case 'N':case'n':
 			startMenu();
@@ -330,7 +343,7 @@ void printImage()
 	
 	return;
 }
-void printScore()
+void printScore(int level)
 {
 	int x,y;
 	x=3;
@@ -341,7 +354,7 @@ void printScore()
 	x=65;
 	y=10;
 	gotoxy(x,y);
-	printf("Level 01\n");
+	printf("Level %d\n",level);
 	x=65;
 	y=12;
 	gotoxy(x,y);
